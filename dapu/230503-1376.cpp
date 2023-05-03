@@ -3,10 +3,33 @@
 
 class Solution
 {
+private:
+    int totatime = 0;
+
+private:
+    void summTime(int n, int node, vector<int>& managers, vector<int>& infotimes, int time)
+    {
+        bool isleaf = true;
+        for (int i = 0; i < n; ++i)
+            if (managers[i] == node)
+                isleaf = false;
+        if (isleaf)
+        {
+            totatime = totatime > time ? totatime : time;
+            return;
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            if (managers[i] == node)
+                summTime(n, i, managers, infotimes, time+infotimes[node]);
+        }
+    }
+
 public:
     int numOfMinutes(int n, int headID, vector<int>& managers, vector<int>& infotimes)
     {
-        
+        summTime(n, headID, managers, infotimes, 0);
+        return totatime;
     }
 };
 
