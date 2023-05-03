@@ -1,0 +1,1 @@
+Solutions for code interview.
