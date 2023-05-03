@@ -61,8 +61,8 @@ public:
             for (int j=0, pary=pow(y,j); pary <= bound-parx; ++j)
                 ret.insert(parx+pary);
         }
-        }
         return vector<int>(ret.begin(), ret.end());
+    }
 };
 
 int main()
