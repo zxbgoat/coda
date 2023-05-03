@@ -7,6 +7,39 @@ private:
     int totatime = 0;
 
 private:
+    void deptrans(unordered_map<int,vector<int>>& hier, vector<int>& times, int node, int time)
+    {
+        if (hier.find(node) == hier.end())
+        {
+            totatime = totatime > time ? totatime : time;
+            return;
+        }
+        for (int i: hier[node])
+            deptrans(hier, times, i, time+times[node]);
+    }
+
+public:
+    int numOfMinutes(int n, int headID, vector<int>& managers, vector<int>& infotimes)
+    {
+        unordered_map<int, vector<int>> hier;
+        for (int i = 0; i < n; ++i)
+            if (i != headID)
+                hier[managers[i]].push_back(i);
+        deptrans(hier, infotimes, headID, 0);
+        return totatime;
+    }
+};
+
+
+/*
+ * Time Limitation Error.
+ */
+class Solution1
+{
+private:
+    int totatime = 0;
+
+private:
     void summTime(int n, int node, vector<int>& managers, vector<int>& infotimes, int time)
     {
         bool isleaf = true;
@@ -34,6 +67,10 @@ public:
 };
 
 
+
+/*
+ * Memory Limitation Error.
+ */
 class Solution0
 {
 private:
