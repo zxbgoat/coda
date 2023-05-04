@@ -4,12 +4,14 @@
 #include <cmath>
 #include <array>
 #include <vector>
+#include <string>
 #include <iostream>
 
 using std::set;
 using std::map;
 using std::array;
 using std::vector;
+using std::string;
 using std::unordered_map;
 
 using std::swap;
